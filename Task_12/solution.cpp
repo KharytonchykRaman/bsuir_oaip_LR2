@@ -29,15 +29,15 @@ int main() {
             //b*x^2 + c = 0  =>  x^2 = -c/b
             double t = -c / b;
             if (t < 0) {
-                std::cout << "No real solutions\n";
+                cout << "No real solutions\n";
             }
             else if (t == 0) {
-                std::cout << "x = 0\n";
+                cout << "x = 0\n";
             }
             else {
                 double root = my_sqrt(t);
-                std::cout << "x1 = " << -root << "\n";
-                std::cout << "x2 = " << root << "\n";
+                cout << "x1 = " << -root << "\n";
+                cout << "x2 = " << root << "\n";
             }
         }
         return 0;
@@ -48,7 +48,7 @@ int main() {
     double D = b * b - 4 * a * c;
 
     if (D < 0) {
-        std::cout << "No real solutions\n";
+        cout << "No real solutions\n";
         return 0;
     }
 
@@ -60,32 +60,32 @@ int main() {
 
     if (t1 > 0) {
         double x = my_sqrt(t1);
-        std::cout << "x1 = " << -x << "\n";
-        std::cout << "x2 = " << x << "\n";
+        cout << "x1 = " << -x << "\n";
+        cout << "x2 = " << x << "\n";
         found = true;
     }
     else if (t1 == 0) {
-        std::cout << "x = 0\n";
+        cout << "x = 0\n";
         found = true;
     }
 
     if (D > 0) {
         if (t2 > 0) {
             double x = my_sqrt(t2);
-            std::cout << "x3 = " << -x << "\n";
-            std::cout << "x4 = " << x << "\n";
+            cout << "x3 = " << -x << "\n";
+            cout << "x4 = " << x << "\n";
             found = true;
         }
         else if (t2 == 0) {
             if (t1 != 0) {
-                std::cout << "x = 0\n";
+                cout << "x = 0\n";
                 found = true;
             }
         }
     }
 
     if (!found) {
-        std::cout << "No real solutions\n";
+        cout << "No real solutions\n";
     }
 
     return 0;
