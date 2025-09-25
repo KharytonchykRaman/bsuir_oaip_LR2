@@ -16,71 +16,71 @@ int main() {
     cout << "Enter a, b, c: ";
     cin >> a >> b >> c;
 
-    if (a == 0.0) {
-        if (b == 0.0) {
-            if (c == 0.0) {
-                cout << "Infinite solutions\n";
-            }
-            else {
-                cout << "No solutions\n";
-            }
-        }
-        else {
-            //b*x^2 + c = 0  =>  x^2 = -c/b
-            double t = -c / b;
-            if (t < 0) {
-                cout << "No real solutions\n";
-            }
-            else if (t == 0) {
-                cout << "x = 0\n";
-            }
-            else {
-                double root = my_sqrt(t);
-                cout << "x1 = " << -root << "\n";
-                cout << "x2 = " << root << "\n";
-            }
-        }
+    if (a == 0.0 && b == 0.0 && c == 0.0) {
+        cout << "Infinite number of solutions\n";
         return 0;
     }
-
-    // a*x^4 + b*x^2 + c = 0
-    // t = x^2 => a*t^2 + b*t + c = 0
-    double D = b * b - 4 * a * c;
-
-    if (D < 0) {
-        cout << "No real solutions\n";
-        return 0;
-    }
-
-    double sqrtD = my_sqrt(D);
-    double t1 = (-b + sqrtD) / (2 * a);
-    double t2 = (-b - sqrtD) / (2 * a);
 
     bool found = false;
 
-    if (t1 > 0) {
-        double x = my_sqrt(t1);
-        cout << "x1 = " << -x << "\n";
-        cout << "x2 = " << x << "\n";
-        found = true;
-    }
-    else if (t1 == 0) {
+    if (a == 0.0) {
+        // x*(b x^2 + c x + b) = 0
         cout << "x = 0\n";
         found = true;
-    }
 
-    if (D > 0) {
-        if (t2 > 0) {
-            double x = my_sqrt(t2);
-            cout << "x3 = " << -x << "\n";
-            cout << "x4 = " << x << "\n";
-            found = true;
+        if (b == 0.0) {
+            // x^2 = 0
         }
-        else if (t2 == 0) {
-            if (t1 != 0) {
-                cout << "x = 0\n";
+        else {
+            // b x^2 + c x + b = 0
+            double D = c * c - 4 * b * b;
+            if (D >= 0) {
+                double sqrtD = my_sqrt(D);
+                double x1 = (-c + sqrtD) / (2 * b);
+                double x2 = (-c - sqrtD) / (2 * b);
+                cout << "x = " << x1 << "\n";
+                if (D > 0) {
+                    cout << "x = " << x2 << "\n";
+                }
                 found = true;
             }
+        }
+    }
+    else {
+        // a != 0
+        double A = a;
+        double B = b;
+        double C = c - 2 * a;
+
+        double D_t = B * B - 4 * A * C;
+
+        if (D_t < 0) {
+            cout << "No real solutions\n";
+            return 0;
+        }
+
+        double sqrtD_t = my_sqrt(D_t);
+        double t1 = (-B + sqrtD_t) / (2 * A);
+        double t2 = (-B - sqrtD_t) / (2 * A);
+
+        auto solve_for_t = [&](double t) {
+            double D_x = t * t - 4;
+            if (D_x < 0) {
+                return;
+            }
+            double sqrtD_x = my_sqrt(D_x);
+            double x1 = (t + sqrtD_x) / 2;
+            double x2 = (t - sqrtD_x) / 2;
+            cout << "x = " << x1 << "\n";
+            if (D_x > 0) {
+                cout << "x = " << x2 << "\n";
+            }
+            found = true;
+            };
+
+        solve_for_t(t1);
+        if (D_t > 0) {
+            solve_for_t(t2);
         }
     }
 
