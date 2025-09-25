@@ -3,14 +3,14 @@
 using namespace std;
 
 int main() {
-	double x, d, K, C;
-	cout << "Enter x, d, K, C: ";
-	cin >> x >> d >> K >> C;
+	double x, p, z, K, C, D;
+	cout << "Enter x, p, z, K, C, D: ";
+	cin >> x >> p >> z >> K >> C >> D;
 
-	double A = log(x);
-	double B = x + exp(d);
+	double A = sin(x) - z;
+	double B = abs(p - x);
 
-	cout << "Y = " << A + B - C * C / K;
+	cout << "Y = " << pow(A + B, 2) - K / C / D;
 
 	return 0;
 }
