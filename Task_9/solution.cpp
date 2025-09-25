@@ -9,7 +9,7 @@ int main() {
 	cin >> z >> n >> m >> k;
 
 	int choose;
-	cout << "Choose f(x) :\n1. 2x\n2. x^3\n3. x/3";
+	cout << "Choose f(x) :\n1. 2x\n2. x^3\n3. x/3\n";
 	cin >> choose;
 
 	double result, x;
