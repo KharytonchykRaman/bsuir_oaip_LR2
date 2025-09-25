@@ -107,9 +107,7 @@ int main() {
 	cout << "Triangle angles:\n";
 	cout << "Angle A: " << A_rad << " rad, " << A_deg << " deg\n";
 	cout << "Angle B: " << B_rad << " rad, " << B_deg << " deg\n";
-	cout << "Angle C: " << C_rad << " rad, " << C_deg << " deg\n";
-	cout << "Sum of angles (rad): " << (A_rad + B_rad + C_rad) << "\n";
-	cout << "Sum of angles (deg): " << (A_deg + B_deg + C_deg) << "\n\n";
+	cout << "Angle C: " << C_rad << " rad, " << C_deg << " deg\n\n";
 
 	double r = S / p;
 	double R = (a * b * c) / (4.0 * S);
